@@ -3,7 +3,9 @@
 ### Generate evironment for the project
 ```python3 -m venv venv```
 ### Enable the Environment
-```source venv/bin/activate
+```
+# For macOS / linux
+source venv/bin/activate
 # For PowerShell
 ~ .\venv\Scripts\Active
 ```
