@@ -1,0 +1,49 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+pip-wheel-metadata/
+dist/
+build/
+.eggs/
+*.egg-info/
+
+# ===== Environment variables =====
+.env
+.env.*
+!.env.example
+
+# ===== Logs =====
+*.log
+
+# ===== Database =====
+*.sqlite3
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== Test / Coverage =====
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===== Migrations (optional) =====
+# Uncomment if you want to ignore migrations
+# alembic/versions/
+
+# ===== Uvicorn =====
+uvicorn.log
