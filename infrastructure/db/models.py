@@ -8,6 +8,8 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, nullable=False)
+    name = Column(String, nullable=True)
+    mobile = Column(String, nullable=True)
     
     # Relationship to blogs
     blogs = relationship("Blog", back_populates="author")
