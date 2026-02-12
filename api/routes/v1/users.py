@@ -4,7 +4,7 @@ from core.dependencies import get_user_service
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
-@router.post("", response_model="schemas.UserResponse")
+@router.post("", response_model=UserResponse)
 def create_user(
     data: UserCreate,
     service = Depends(get_user_service)

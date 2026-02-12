@@ -5,7 +5,8 @@
 ### Enable the Environment
 ```
 # For macOS / linux
-source venv/bin/activate
+~ source venv/bin/activate
+
 # For PowerShell
 ~ .\venv\Scripts\Active
 ```

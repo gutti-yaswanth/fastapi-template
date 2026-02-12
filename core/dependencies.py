@@ -2,6 +2,8 @@ from fastapi import Depends
 from infrastructure.db.session import SessionLocal
 from domain.user.repository import UserRepository
 from domain.user.service import UserService
+from domain.blog.repository import BlogRepository
+from domain.blog.service import BlogService
 
 def get_db():
     db = SessionLocal()
@@ -13,3 +15,7 @@ def get_db():
 def get_user_service(db=Depends(get_db)):
     repo = UserRepository(db)
     return UserService(repo)
+
+def get_blog_service(db=Depends(get_db)):
+    repo = BlogRepository(db)
+    return BlogService(repo)

@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, text
 
 load_dotenv()
 
-CONNECTION_STRING = os.getenv("CONNECTION_STRING")
+CONNECTION_STRING = os.getenv("DATABASE_URL")
 
 if not CONNECTION_STRING:
     print("❌ ERROR: CONNECTION_STRING not found in .env file")
