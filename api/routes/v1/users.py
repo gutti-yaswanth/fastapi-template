@@ -10,6 +10,6 @@ def create_user(
     service = Depends(get_user_service)
 ):
     try:
-        return service.create_user(data.email)
+        return service.create_user(data.email, data.name, data.mobile)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

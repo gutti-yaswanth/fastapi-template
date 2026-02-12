@@ -7,8 +7,8 @@ class UserRepository:
     def get_by_email(self, email: str):
         return self.db.query(User).filter(User.email == email).first()
 
-    def create(self, email: str):
-        user = User(email=email)
+    def create(self, email: str, name: str = None, mobile: str = None):
+        user = User(email=email, name=name, mobile=mobile)
         self.db.add(user)
         self.db.commit()
         self.db.refresh(user)
