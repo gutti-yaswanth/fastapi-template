@@ -6,6 +6,8 @@ from domain.blog.repository import BlogRepository
 from domain.blog.service import BlogService
 from domain.job.repository import JobRepository
 from domain.job.service import JobService
+from domain.zan_user.repository import ZanUserRepository
+from domain.zan_user.service import ZanUserService
 
 def get_db():
     db = SessionLocal()
@@ -25,3 +27,7 @@ def get_blog_service(db=Depends(get_db)):
 def get_job_service(db=Depends(get_db)):
     repo = JobRepository(db)
     return JobService(repo)
+
+def get_zan_user_service(db=Depends(get_db)):
+    repo = ZanUserRepository(db)
+    return ZanUserService(repo)
