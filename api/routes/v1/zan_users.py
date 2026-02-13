@@ -12,10 +12,10 @@ def create_zan_user(
 ):
     try:
         return service.create_zan_user(
+            data.phone,
             data.first_name,
             data.last_name,
             data.email,
-            data.phone,
             data.address,
             data.is_zancrew,
             data.zancrew_id
