@@ -43,3 +43,17 @@ class Job(Base):
     
     # Relationship to user
     user = relationship("User", back_populates="jobs")
+
+class ZanUser(Base):
+    __tablename__ = "zan_user"
+
+    user_id = Column(Integer, primary_key=True)
+    first_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
+    phone = Column(String, nullable=True)
+    address = Column(Text, nullable=True)
+    is_zancrew = Column(String, nullable=False, default="false")
+    zancrew_id = Column(Integer, nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
