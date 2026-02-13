@@ -1,14 +1,15 @@
 class ZanUserService:
-    def __init__(self, repo):
+    def __init__(self, repo, zan_crew_repo=None):
         self.repo = repo
+        self.zan_crew_repo = zan_crew_repo
 
-    def create_zan_user(self, first_name: str, last_name: str, email: str, phone: str = None,
-                       address: str = None, is_zancrew: str = "false", zancrew_id: int = None):
-        # Check if email already exists
-        if self.repo.get_by_email(email):
+    def create_zan_user(self, phone: str, first_name: str = None, last_name: str = None,
+                       email: str = None, address: str = None, is_zancrew: str = "false", zancrew_id: int = None):
+        # Check if email already exists (only if email is provided)
+        if email and self.repo.get_by_email(email):
             raise ValueError("User with this email already exists")
         
-        return self.repo.create(first_name, last_name, email, phone, address, is_zancrew, zancrew_id)
+        return self.repo.create(phone, first_name, last_name, email, address, is_zancrew, zancrew_id)
 
     def get_zan_user(self, user_id: int):
         zan_user = self.repo.get_by_id(user_id)
@@ -35,6 +36,11 @@ class ZanUserService:
                                     address, is_zancrew, zancrew_id)
         if not zan_user:
             raise ValueError("ZanUser not found")
+        
+        # Cascade phone update to zan_crew if phone was updated
+        if phone is not None and self.zan_crew_repo:
+            self.zan_crew_repo.update_phone_by_user_id(user_id, phone)
+        
         return zan_user
 
     def delete_zan_user(self, user_id: int):

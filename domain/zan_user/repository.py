@@ -10,19 +10,22 @@ class ZanUserRepository:
     def get_by_email(self, email: str):
         return self.db.query(ZanUser).filter(ZanUser.email == email).first()
 
+    def get_by_phone(self, phone: str):
+        return self.db.query(ZanUser).filter(ZanUser.phone == phone).first()
+
     def get_all(self, skip: int = 0, limit: int = 100):
         return self.db.query(ZanUser).offset(skip).limit(limit).all()
 
     def get_by_zancrew_id(self, zancrew_id: int, skip: int = 0, limit: int = 100):
         return self.db.query(ZanUser).filter(ZanUser.zancrew_id == zancrew_id).offset(skip).limit(limit).all()
 
-    def create(self, first_name: str, last_name: str, email: str, phone: str = None, 
-               address: str = None, is_zancrew: str = "false", zancrew_id: int = None):
+    def create(self, phone: str, first_name: str = None, last_name: str = None, 
+               email: str = None, address: str = None, is_zancrew: str = "false", zancrew_id: int = None):
         zan_user = ZanUser(
+            phone=phone,
             first_name=first_name,
             last_name=last_name,
             email=email,
-            phone=phone,
             address=address,
             is_zancrew=is_zancrew,
             zancrew_id=zancrew_id
