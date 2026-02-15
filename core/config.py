@@ -27,3 +27,15 @@ if not SUPABASE_URL or not SUPABASE_ANON_KEY:
         "Please set them in your .env file. "
         "You can find these in your Supabase Dashboard → Settings → API"
     )
+
+# Redis configuration for caching
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", "6379"))
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", None)
+REDIS_DB = int(os.getenv("REDIS_DB", "0"))
+REDIS_URL = os.getenv("REDIS_URL", None)  # Optional: full Redis URL (e.g., redis://:password@host:port/db)
+
+# Cache TTL settings (in seconds)
+CACHE_TTL_JOBS_LIST = int(os.getenv("CACHE_TTL_JOBS_LIST", "300"))  # 5 minutes default
+CACHE_TTL_JOB_DETAIL = int(os.getenv("CACHE_TTL_JOB_DETAIL", "600"))  # 10 minutes default
+CACHE_TTL_JOBS_BY_USER = int(os.getenv("CACHE_TTL_JOBS_BY_USER", "300"))  # 5 minutes default
