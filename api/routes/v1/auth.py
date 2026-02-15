@@ -67,7 +67,7 @@ async def send_otp(
                 detail={
                     "error": "SMS provider configuration error",
                     "message": "Twilio is not properly configured in Supabase. Please check your Supabase Dashboard → Authentication → Providers → Phone settings.",
-                    "details": error_message,
+                    "details": "New Error: " + error_message,
                     "help": "Ensure you have: 1) Enabled Phone provider, 2) Configured Twilio Account SID, Auth Token, and Verify Service SID correctly, 3) Verified your Twilio phone number"
                 }
             )
